@@ -95,8 +95,9 @@ namespace std {
             // Hashing end
             hash = hash * 31 + int_hasher(cj.end);
 
-            // Hashing strand
-            hash = hash * 31 + char_hasher(cj.strand);
+            // Note: strand is intentionally NOT included in the hash
+            // Junction matching should be strand-agnostic since alignments
+            // may lack XS tags (returning '.') while BED files have '+'/'-'
 
             // Hashing chr
             const char* chr_ptr = cj.chr;
